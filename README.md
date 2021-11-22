@@ -20,8 +20,8 @@ composer require squareetlabs/laravel-zipper
 
 3. Go to `app/config/app.php`
 
-  * add to providers `SquareetLabs\Zipper\ZipperServiceProvider::class`
-  * add to aliases `'Zipper' => SquareetLabs\Zipper\Zipper::class`
+  * add to providers `Zipper\ZipperServiceProvider::class`
+  * add to aliases `'Zipper' => Zipper\Zipper::class`
 
 You can now access Zipper with the `Zipper` alias.
 
