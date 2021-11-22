@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SquareetLabs\\Zipper\\": "src/"
+            "Zipper\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SquareetLabs\\Zipper\\": "tests/"
+            "Zipper\\": "tests/"
         }
     },
     "config": {
@@ -51,10 +51,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SquareetLabs\\Zipper\\ZipperServiceProvider"
+                "Zipper\\ZipperServiceProvider"
             ],
             "aliases": {
-                "Zipper": "SquareetLabs\\Zipper\\Zipper"
+                "Zipper": "Zipper\\Zipper"
             }
         }
     },
