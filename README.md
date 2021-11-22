@@ -3,9 +3,9 @@
 <a href="https://scrutinizer-ci.com/g/squareetlabs/Zipper/"><img src="https://scrutinizer-ci.com/g/squareetlabs/LaravelZipper/badges/quality-score.png?b=master" alt="Quality Score"></a>
 <a href="https://scrutinizer-ci.com/g/squareetlabs/Zipper/"><img src="https://scrutinizer-ci.com/g/squareetlabs/LaravelZipper/badges/build.png?b=master" alt="Build Status"></a>
 <a href="https://scrutinizer-ci.com/g/squareetlabs/Zipper/"><img src="https://scrutinizer-ci.com/g/squareetlabs/LaravelZipper/badges/code-intelligence.svg?b=master" alt="Code Intelligence"></a>
-<a href="https://packagist.org/packages/squareetlabs/laravel-zipper"><img class="latest_stable_version_img" src="https://poser.pugx.org/squareetlabs/laravel-zipper/v/stable" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/squareetlabs/laravel-zipper"><img class="total_img" src="https://poser.pugx.org/squareetlabs/laravel-zipper/downloads" alt="Total Downloads"></a> 
-<a href="https://packagist.org/packages/squareetlabs/laravel-zipper"><img class="license_img" src="https://poser.pugx.org/squareetlabs/laravel-zipper/license" alt="License"></a>
+<a href="https://packagist.org/packages/squareetlabs/zipper"><img class="latest_stable_version_img" src="https://poser.pugx.org/squareetlabs/zipper/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/squareetlabs/zipper"><img class="total_img" src="https://poser.pugx.org/squareetlabs/zipper/downloads" alt="Total Downloads"></a> 
+<a href="https://packagist.org/packages/squareetlabs/zipper"><img class="license_img" src="https://poser.pugx.org/squareetlabs/zipper/license" alt="License"></a>
 </p>
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
 
