@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use Mockery;
 use RuntimeException;
 
-class ZipperTest extends \PHPUnit_Framework_TestCase
+class ZipperTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \SquareetLabs\Zipper\Zipper
@@ -20,14 +20,14 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
      */
     public $file;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->file = Mockery::mock(new Filesystem());
         $this->archive = new Zipper($this->file);
         $this->archive->make('foo', new ArrayArchive('foo', true));
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Mockery::close();
     }
