@@ -4,6 +4,8 @@ namespace SquareetLabs\Zipper\Repositories;
 
 use Exception;
 use Mockery;
+use Mockery\Mock;
+use PHPUnit\Framework\TestCase;
 use ZipArchive;
 
 /**
@@ -13,7 +15,7 @@ use ZipArchive;
  * Time: 20:57
  * To change this template use File | Settings | File Templates.
  */
-class ZipRepositoryTest extends \PHPUnit\Framework\TestCase
+class ZipRepositoryTest extends TestCase
 {
     /**
      * @var ZipRepository
@@ -21,7 +23,7 @@ class ZipRepositoryTest extends \PHPUnit\Framework\TestCase
     public $zip;
 
     /**
-     * @var \Mockery\Mock
+     * @var Mock
      */
     public $mock;
 

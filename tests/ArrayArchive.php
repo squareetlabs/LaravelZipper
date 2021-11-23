@@ -15,7 +15,7 @@ class ArrayArchive implements RepositoryInterface
      * @param bool $new
      * @param $archiveImplementation
      */
-    public function __construct($filePath, $new = false, $archiveImplementation = null)
+    public function __construct($filePath, bool $new, $archiveImplementation = null)
     {
     }
 
