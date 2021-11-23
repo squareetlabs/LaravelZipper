@@ -12,7 +12,7 @@ This is a simple Wrapper around the ZipArchive methods with some handy functions
 
 You can install this package via composer:
 ```bash
-composer require squareetlabs/laravel-zipper
+composer require squareetlabs/zipper
 ```
   
 2. Run `composer update`
