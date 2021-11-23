@@ -4,7 +4,6 @@ namespace SquareetLabs\Zipper\Repositories;
 
 use Exception;
 use Mockery;
-use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
 use ZipArchive;
 
@@ -23,10 +22,13 @@ class ZipRepositoryTest extends TestCase
     public $zip;
 
     /**
-     * @var Mock
+     * @var Mockery\Mock
      */
     public $mock;
 
+    /**
+     * @throws Exception
+     */
     public function setUp(): void
     {
         $this->mock = Mockery::mock(new ZipArchive());
