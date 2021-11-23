@@ -15,7 +15,7 @@ use SquareetLabs\Zipper\Repositories\ZipRepository;
  *
  * Class Zipper
  */
-class Zipper
+class Zipper implements ZipperInterface
 {
     /**
      * Constant for extracting
@@ -79,13 +79,13 @@ class Zipper
      * @param $pathToFile string The file to open
      * @param RepositoryInterface|string $type The type of the archive, defaults to zip, possible are zip, phar
      *
-     * @return $this Zipper instance
+     * @return ZipperInterface Zipper instance
      * @throws Exception
      * @throws InvalidArgumentException
      *
      * @throws RuntimeException
      */
-    public function make(string $pathToFile, $type = 'zip'): Zipper
+    public function make(string $pathToFile, $type = 'zip'): ZipperInterface
     {
         $new = $this->createArchiveFile($pathToFile);
 
@@ -108,11 +108,11 @@ class Zipper
      *
      * @param $pathToFile
      *
-     * @return $this
+     * @return ZipperInterface
      * @throws Exception
      *
      */
-    public function zip($pathToFile): Zipper
+    public function zip($pathToFile): ZipperInterface
     {
         $this->make($pathToFile);
 
@@ -124,11 +124,11 @@ class Zipper
      *
      * @param $pathToFile
      *
-     * @return $this
+     * @return ZipperInterface
      * @throws Exception
      *
      */
-    public function phar($pathToFile): Zipper
+    public function phar($pathToFile): ZipperInterface
     {
         $this->make($pathToFile, 'phar');
 
@@ -140,11 +140,11 @@ class Zipper
      *
      * @param $pathToFile
      *
-     * @return $this
+     * @return ZipperInterface
      * @throws Exception
      *
      */
-    public function rar($pathToFile): Zipper
+    public function rar($pathToFile): ZipperInterface
     {
         $this->make($pathToFile, 'rar');
 
@@ -241,9 +241,9 @@ class Zipper
      * @param $pathToAdd array|string An array or string of files and folders to add
      * @param null|mixed $fileName
      *
-     * @return $this Zipper instance
+     * @return ZipperInterface Zipper instance
      */
-    public function add($pathToAdd, $fileName = null)
+    public function add($pathToAdd, $fileName = null): ZipperInterface
     {
         if (is_array($pathToAdd)) {
             foreach ($pathToAdd as $key => $dir) {
@@ -271,9 +271,9 @@ class Zipper
      *
      * @param $dirName
      *
-     * @return Zipper
+     * @return ZipperInterface
      */
-    public function addEmptyDir($dirName): Zipper
+    public function addEmptyDir($dirName): ZipperInterface
     {
         $this->repository->addEmptyDir($dirName);
 
@@ -286,9 +286,9 @@ class Zipper
      * @param $filename string The name of the file to create
      * @param $content string The file contents
      *
-     * @return $this Zipper instance
+     * @return ZipperInterface Zipper instance
      */
-    public function addString(string $filename, string $content): Zipper
+    public function addString(string $filename, string $content): ZipperInterface
     {
         $this->addFromString($filename, $content);
 
@@ -310,9 +310,9 @@ class Zipper
      *
      * @param $fileToRemove array|string The path/array to the files in the zip
      *
-     * @return $this Zipper instance
+     * @return ZipperInterface Zipper instance
      */
-    public function remove($fileToRemove): Zipper
+    public function remove($fileToRemove): ZipperInterface
     {
         if (is_array($fileToRemove)) {
             $self = $this;
@@ -367,9 +367,9 @@ class Zipper
      *
      * @param $path
      *
-     * @return $this
+     * @return ZipperInterface
      */
-    public function folder($path): Zipper
+    public function folder($path): ZipperInterface
     {
         $this->currentFolder = $path;
 
@@ -379,9 +379,9 @@ class Zipper
     /**
      * Resets the internal folder to the root of the zip file.
      *
-     * @return $this
+     * @return ZipperInterface
      */
-    public function home(): Zipper
+    public function home(): ZipperInterface
     {
         $this->currentFolder = '';
 

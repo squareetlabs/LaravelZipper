@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ZipperTest extends TestCase
 {
     /**
-     * @var Zipper
+     * @var ZipperInterface
      */
     public $archive;
 
