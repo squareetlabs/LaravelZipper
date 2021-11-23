@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use SquareetLabs\Zipper\Repositories\RepositoryInterface;
 use InvalidArgumentException;
 use RuntimeException;
+use SquareetLabs\Zipper\Repositories\ZipRepository;
+
 /**
  * This Zipper class is a wrapper around the ZipArchive methods with some handy functions
  *
@@ -83,22 +85,14 @@ class Zipper
      *
      * @throws RuntimeException
      */
-    public function make(string $pathToFile, $type = 'zip')
+    public function make(string $pathToFile, $type = 'zip'): Zipper
     {
         $new = $this->createArchiveFile($pathToFile);
 
-        $objectOrName = $type;
-        if (is_string($type)) {
-            $objectOrName = 'SquareetLabs\Zipper\Repositories\\' . ucwords($type) . 'Repository';
-        }
-
-        if (!is_subclass_of($objectOrName, 'SquareetLabs\Zipper\Repositories\RepositoryInterface')) {
-            throw new InvalidArgumentException("Class for '$objectOrName' must implement RepositoryInterface interface");
-        }
-
-
-        if (is_string($objectOrName)) {
-            $this->repository = new $objectOrName($pathToFile, $new);
+        if (is_string($type)){
+            if(ucwords($type) === 'zip') {
+                $this->repository = new ZipRepository($pathToFile, $new);
+            }
         } else {
             $this->repository = $type;
         }
@@ -118,7 +112,7 @@ class Zipper
      * @throws Exception
      *
      */
-    public function zip($pathToFile)
+    public function zip($pathToFile): Zipper
     {
         $this->make($pathToFile);
 
@@ -134,7 +128,7 @@ class Zipper
      * @throws Exception
      *
      */
-    public function phar($pathToFile)
+    public function phar($pathToFile): Zipper
     {
         $this->make($pathToFile, 'phar');
 
@@ -150,7 +144,7 @@ class Zipper
      * @throws Exception
      *
      */
-    public function rar($pathToFile)
+    public function rar($pathToFile): Zipper
     {
         $this->make($pathToFile, 'rar');
 
@@ -620,8 +614,8 @@ class Zipper
         }
 
         // We need to create the directory first in case it doesn't exist
-        $dir = pathinfo($path . DIRECTORY_SEPARATOR . $tmpPath, PATHINFO_DIRNAME);
-        if (!$this->file->exists($dir) && !$this->file->makeDirectory($dir, 0755, true, true)) {
+        $dir = pathinfo($path . DIRECTORY_SEPARATOR . $tmpPath, PATHINFO_DIRNAME | PATHINFO_BASENAME);
+        if (!$this->file->exists($dir['dirname']) && !$this->file->makeDirectory($dir, 0755, true, true)) {
             throw new RuntimeException('Failed to create folders');
         }
 

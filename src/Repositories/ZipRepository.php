@@ -82,7 +82,7 @@ class ZipRepository implements RepositoryInterface
      *
      * @return string
      */
-    public function getFileContent($pathInArchive)
+    public function getFileContent($pathInArchive): string
     {
         return $this->archive->getFromName($pathInArchive);
     }
@@ -92,7 +92,7 @@ class ZipRepository implements RepositoryInterface
      *
      * @param $pathInArchive
      *
-     * @return mixed
+     * @return false|resource
      */
     public function getFileStream($pathInArchive)
     {
@@ -127,7 +127,7 @@ class ZipRepository implements RepositoryInterface
      *
      * @return bool
      */
-    public function fileExists($fileInArchive)
+    public function fileExists($fileInArchive): bool
     {
         return $this->archive->locateName($fileInArchive) !== false;
     }
@@ -140,7 +140,7 @@ class ZipRepository implements RepositoryInterface
      *
      * @return bool
      */
-    public function usePassword($password)
+    public function usePassword($password): bool
     {
         return $this->archive->setPassword($password);
     }
@@ -150,7 +150,7 @@ class ZipRepository implements RepositoryInterface
      *
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->archive->getStatusString();
     }
@@ -160,10 +160,10 @@ class ZipRepository implements RepositoryInterface
      */
     public function close()
     {
-        @$this->archive->close();
+        $this->archive->close();
     }
 
-    private function getErrorMessage($resultCode)
+    private function getErrorMessage(int $resultCode): string
     {
         switch ($resultCode) {
             case ZipArchive::ER_EXISTS:
