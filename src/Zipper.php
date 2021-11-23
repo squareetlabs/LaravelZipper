@@ -614,8 +614,8 @@ class Zipper
         }
 
         // We need to create the directory first in case it doesn't exist
-        $dir = pathinfo($path . DIRECTORY_SEPARATOR . $tmpPath, PATHINFO_DIRNAME | PATHINFO_BASENAME);
-        if (!$this->file->exists($dir['dirname']) && !$this->file->makeDirectory($dir, 0755, true, true)) {
+        $dir = pathinfo($path . DIRECTORY_SEPARATOR . $tmpPath, PATHINFO_DIRNAME);
+        if (is_string($dir) && !$this->file->exists($dir) && !$this->file->makeDirectory($dir, 0755, true, true)) {
             throw new RuntimeException('Failed to create folders');
         }
 
